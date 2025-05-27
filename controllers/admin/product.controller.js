@@ -34,6 +34,29 @@ module.exports.index = async(req, res) => {
 }
 
 module.exports.changeStatus = async(req, res) => {
-    console.log(req.params);
-    res.send("Change status of product");
+    const id = req.params.id;
+    const status = req.params.status;
+    await Product.updateOne({_id: id}, {status: status});
+    const query = req.query;
+    let queryString = '';
+    if (Object.keys(query).length > 0) {
+        queryString = '?' + new URLSearchParams(query).toString();
+    }
+    res.redirect("/admin/products");
+}
+module.exports.changeMulti = async(req, res) => {
+    const type = req.body.type;
+    const ids = req.body.ids.split(", ");
+    console.log(type, ids);
+    switch(type){
+        case "active":
+            await Product.updateMany({_id: {$in: ids}}, {status: "active"});
+            break;
+        case "inactive":
+            await Product.updateMany({_id: {$in: ids}}, {status: "inactive"});
+            break;
+        default:
+            break;
+    }
+    res.redirect("/admin/products");
 }
