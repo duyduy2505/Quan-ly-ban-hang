@@ -9,10 +9,29 @@ if (buttonsChangestatus) {
             const id = button.getAttribute('data-id');
             let statusChange = statusCurrent == "active" ? "inactive" : "active";
             const action = path + `/${statusChange}/${id}?_method=PATCH`;
-            console.log(action);
             formChangeStatus.action = action;
             formChangeStatus.submit();
         });
     });
 
+}
+
+const buttonsDelete = document.querySelectorAll("[button-delete]");
+if (buttonsDelete.length > 0) {
+    const formDeleteItem = document.querySelector('#form-delete-item');
+    const path = formDeleteItem.getAttribute('data-path');
+    buttonsDelete.forEach(button => {
+        button.addEventListener('click', () => {
+            const isCofirm = confirm('Bạn có chắc chắn muốn xóa sản phẩm này không?');
+            if (isCofirm) {
+                const id = button.getAttribute('data-id');
+                console.log(id);
+                const action = path + `/${id}?_method=DELETE`;
+                console.log(action); // Kiểm tra URL được tạo
+                formDeleteItem.action = action;
+                formDeleteItem.submit();
+
+            }
+        });
+    });
 }
