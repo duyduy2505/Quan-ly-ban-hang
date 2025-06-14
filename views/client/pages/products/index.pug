@@ -2,6 +2,7 @@ extends ../../layouts/default.pug
 include ../../mixins/box-head.pug
 
 block main
+
   .container.my-3
     .row
       .col-12
@@ -18,7 +19,9 @@ block main
                   alt=item.title
                 )
               .inner-content
-                  h3.inner-title #{item.title}
+                  h3.inner-title 
+                    a(href=`/products/${item.slug}`) #{item.title}
+                  p.inner-price-old #{item.price}$
                   p.inner-price #{item.pricenew}$
 
       

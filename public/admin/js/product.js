@@ -25,9 +25,7 @@ if (buttonsDelete.length > 0) {
             const isCofirm = confirm('Bạn có chắc chắn muốn xóa sản phẩm này không?');
             if (isCofirm) {
                 const id = button.getAttribute('data-id');
-                console.log(id);
                 const action = path + `/${id}?_method=DELETE`;
-                console.log(action); // Kiểm tra URL được tạo
                 formDeleteItem.action = action;
                 formDeleteItem.submit();
 

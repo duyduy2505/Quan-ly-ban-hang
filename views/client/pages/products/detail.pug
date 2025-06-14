@@ -1,0 +1,23 @@
+extend ../../layouts/default.pug 
+
+block main
+    .container.my-3
+        .row
+            .col-12
+                if(product.title)
+                    h1(class="mb-4") Tiêu đề: #{product.title}
+                if(product.price)
+                    h1(class="mb-4") Giá: #{product.price}
+                if(product.discountPercentage)
+                    h1(class="mb-4") Giảm giá: #{product.discountPercentage}
+                if(product.stock)
+                    h1(class="mb-4") Tồn kho: #{product.stock}
+                if(product.thumbnail)
+                    h1(class="mb-4") Hình ảnh:
+                    img(src=product.thumbnail, width="200px", height="auto")
+                if(product.position)
+                    h1(class="mb-4") Vị trí:<b> #{product.position} </b>
+                if(product.description)
+                    h1(class="mb-4") 
+                    p #{product.description}
+                

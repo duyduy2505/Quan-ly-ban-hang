@@ -1,0 +1,31 @@
+extend ../../layouts/default.pug
+
+
+block main
+    if(product.title)
+        h1(class="mb-4") Tiêu đề: #{product.title}
+    if(product.price)
+        h1(class="mb-4") Giá: #{product.price}
+    if(product.discountPercentage)
+        h1(class="mb-4") Giảm giá: #{product.discountPercentage}
+    if(product.stock)
+        h1(class="mb-4") Tồn kho: #{product.stock}
+    if(product.thumbnail)
+        h1(class="mb-4") Hình ảnh:
+        img(src=product.thumbnail, width="200px", height="auto")
+    if(product.status)
+        div(class="mb-4")
+            span Trạng thái: 
+            if(product.status === 'active')
+                span(class="badge bg-success ms-2 fs-4") Hoạt động
+            else
+                span(class="badge bg-secondary ms-2 fs-4") Ngừng hoạt động
+    if(product.position)
+        h1(class="mb-4") Vị trí:<b> #{product.position} </b>
+    if(product.description)
+        h1(class="mb-4") Mô tả:
+        p #{product.description}
+    
+    a(href=`${prefixAdmin}/products/edit/${product.id}` class="btn btn-warning btn-sm mt-3") Sửa sản phẩm
+
+    script(src="admin/js/products.js")

@@ -2,6 +2,10 @@ const express = require('express');
 const database = require('./config/database.js');
 const methodOverride = require('method-override');
 const bodyParser = require('body-parser')
+const flash = require('express-flash');
+const cookieParser = require('cookie-parser');
+const session = require('express-session');
+const multer = require('multer');
 require('dotenv').config();
 
 
@@ -17,9 +21,16 @@ app.set("view engine", "pug");
 app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride('_method'));
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(cookieParser('DUYDDUYDDUYD'));
+app.use(session({ cookie: { maxAge: 60000 }}));
+app.use(flash());
+
+
 route(app);
 routeAdmin(app);
 app.locals.prefixAdmin = systemConfig.prefixAdmin;
+
+
 
 app.listen(port, () => {
 console.log(`Example app listening on port ${port}`);
