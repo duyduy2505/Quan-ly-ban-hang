@@ -15,8 +15,12 @@ const systemConfig = require('./config/system.js');
 database.connect();
 const app = express();
 const port = process.env.PORT;
-app.set("views", "./views");
-app.use(express.static("public"));
+app.set("views", `${__dirname}/views`);
+
+
+
+app.use(express.static(`${__dirname}/public`));
+app.use(multer({ dest: './public/uploads/'}).single('avatar'));
 app.set("view engine", "pug");
 app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride('_method'));
