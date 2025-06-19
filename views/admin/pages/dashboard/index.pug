@@ -1,3 +1,11 @@
 extends ../../layouts/default.pug
 block main
-    h1 Trang Tong quan
+    h1 Trang tổng quan
+    .card.mb-3
+        .card-header Thống kê
+        .card-body
+            p Tổng số sản phẩm: #{totalProducts}
+            p Tổng số đơn hàng: #{totalOrders}
+            p Tổng doanh thu: #{totalRevenue} VNĐ
+
+    .card.mb-3

@@ -6,6 +6,7 @@ const flash = require('express-flash');
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
 const multer = require('multer');
+const path = require('path');
 require('dotenv').config();
 
 
@@ -20,7 +21,6 @@ app.set("views", `${__dirname}/views`);
 
 
 app.use(express.static(`${__dirname}/public`));
-app.use(multer({ dest: './public/uploads/'}).single('avatar'));
 app.set("view engine", "pug");
 app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride('_method'));
@@ -28,6 +28,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser('DUYDDUYDDUYD'));
 app.use(session({ cookie: { maxAge: 60000 }}));
 app.use(flash());
+app.use('/tinymce', express.static(path.join(__dirname, 'node_modules', 'tinymce')));
 
 
 route(app);

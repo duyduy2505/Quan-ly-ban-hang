@@ -1,7 +1,5 @@
 const Product = require("../../models/product.model.js");
 
-
-// [get]   /products
 module.exports.index = async(req, res) => {
     let products = [];
     try {
