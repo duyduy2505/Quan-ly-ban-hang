@@ -1,3 +1,6 @@
+include ../mixins/sub-menu.pug
+
+
 header.header
   .container
     .row.align-item-center
@@ -5,5 +8,8 @@ header.header
         img(src="/images/logo.png", alt="Logo")
       nav.inner-menu
         ul
-          li: a(href="/") Trang chủ
-          li: a(href="/products") Sản phẩm
+          li.sub-menu
+            a(href="/") Trang chủ
+          li.sub-menu
+            a(href="/products") Danh mục sản phẩm
+            +sub-menu(layoutProductCategories, '/products')

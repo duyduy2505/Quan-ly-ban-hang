@@ -1,0 +1,43 @@
+extends ../../layouts/default.pug
+include ../../mixins/alert.pug
+
+block main
+    +alert-error(2000)
+    +alert-success(2000)
+    h1 Thêm mới tài khoản
+    form(action=`${prefixAdmin}/accounts/create`, method="POST", enctype="multipart/form-data")
+        div(class="form-group")
+            label(for="fullname") Họ tên
+            input(type="text", name="fullname", id="fullname", class="form-control", required, placeholder="Nhập họ tên")
+        div(class="form-group")
+            label(for="email") Email
+            input(type="email", name="email", id="email", class="form-control", required, placeholder="Nhập email")
+        div(class="form-group")
+            label(for="password") Mật khẩu
+            input(type="password", name="password", id="password", class="form-control", required, placeholder="Nhập mật khẩu")
+        div(class="form-group")
+            label(for="phone") Số điện thoại
+            input(type="number", name="phone", id="phone", class="form-control", required, placeholder="Nhập số điện thoại")
+        div(class="form-group")
+            label(for="avatar") Ảnh đại diện
+            input(type="file", name="avatar", id="avatar", class="form-control-file", accept="image/*,upload-image-input")
+            img(src="", upload-image-preview)
+        div(class="form-group")
+            label(for="role_id") Phân quyền
+            select(name="role_id", id="role_id", class="form-control")
+                option(disabled) --Chọn nhóm quyền--
+                each role in roles
+                    option(value=role._id) #{role.name}
+        div(class="form-group form-check form-check-inline")
+            input(type="radio", name="status", id="statusActive", class="form-check-input,", value="active", checked)
+            label(for="statusActive" class="form-check-label") Hoạt động
+        div(class="form-group form-check form-check-inline")
+            input(type="radio", name="status", id="statusInactive", class="form-check-input", value="inactive")
+            label(for="statusInactive" class="form-check-label") Không hoạt động
+        div(class="form-group")
+            button(type="submit", class="btn btn-primary") Thêm mới
+            
+
+    script(src="/admin/js/script.js")
+
+    

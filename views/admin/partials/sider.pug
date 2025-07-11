@@ -3,8 +3,20 @@
         ul  
             li 
                 a(href=`${prefixAdmin}/dashboard`) Tổng Quan
-            li 
-                a(href=`${prefixAdmin}/products-category`) Danh mục Sản Phẩm
-            li
-                a(href=`${prefixAdmin}/products`) Sản Phẩm 
+            if(role.permissions.includes('product-category_view'))    
+                li 
+                    a(href=`${prefixAdmin}/products-category`) Danh mục Sản Phẩm
+            if(role.permissions.includes('product_view'))
+                li
+                    a(href=`${prefixAdmin}/products`) Sản Phẩm
+            if(role.permissions.includes('roles_view'))
+                li
+                    a(href=`${prefixAdmin}/roles`) Nhóm Quyền
+            if(role.permissions.includes('roles_view'))
+                li
+                    a(href=`${prefixAdmin}/roles/permissions`) Phân quyền
+            if(role.permissions.includes('accounts_view'))
+                li
+                    a(href=`${prefixAdmin}/accounts`) Danh sách Tài khoản
+
                     

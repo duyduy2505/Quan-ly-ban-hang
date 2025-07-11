@@ -99,3 +99,50 @@
     margin-top: 8px;
     text-decoration: line-through;        
 }
+
+
+.sub-menu{
+  position: relative;
+  z-index: 1000;
+}
+
+.sub-menu ul {
+  position: absolute;
+  right: 0;
+  top: 100%;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  background: #fff;
+  border: 1px solid #ddd;
+  min-width: 100px;
+  display: none;
+}
+sub-menu ul li {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+.sub-menu:hover > ul {
+  display: block;
+}
+.sub-menu ul li {
+  position: relative;
+}
+.sub-menu ul li ul {
+  right: 100%;
+  top: 0;
+}
+.sub-menu ul li:hover > ul {
+  display: block;
+}
+.product-item .inner-featured {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+  background: rgba(33, 159, 46, 0.796);
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 12px;
+  font-weight: bold;
+  color: white;
+}

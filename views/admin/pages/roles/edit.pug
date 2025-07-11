@@ -1,0 +1,20 @@
+extends ../../layouts/default.pug
+include ../../mixins/alert.pug
+include ../../mixins/select-tree.pug
+block main
+    +alert-error(2000)
+    h1 Sửa vai trò
+    form(action=`${prefixAdmin}/roles/edit/${data._id}`, method="POST")
+        div(class="form-group")
+            label(for="name") Tên vai trò
+            input(type="text", name="name", id="name", required, class="form-control", placeholder="Nhập tên vai trò", value=data.name)
+        div(class="form-group")
+            label(for="description") Mô tả
+            textarea(name="description", id="desc", class="form-control", rows="5") #{data.description}
+        div(class="form-group")
+            button(type="submit", class="btn btn-primary") Cập nhật
+            
+
+    script(src="/admin/js/script.js")
+
+    

@@ -1,0 +1,36 @@
+extends ../../layouts/default.pug
+include ../../mixins/alert.pug
+
+block main
+    +alert-success(2000)
+    +alert-error(2000)
+    h1 Cập nhật thông tin cá nhân
+    form(action=`${prefixAdmin}/my-accounts/edit/?_method=PATCH`, method="POST", enctype="multipart/form-data")
+        div(class="form-group")
+            label(for="fullname") Họ tên
+            input(type="text", name="fullname", id="fullname", class="form-control", required, placeholder="Nhập họ tên", value=user.fullname)
+        div(class="form-group")
+            label(for="email") Email
+            input(type="email", name="email", id="email", class="form-control", required, placeholder="Nhập email", value=user.email)
+        div(class="form-group")
+            label(for="email") Mật khẩu
+            input(type="password", name="password", id="password", class="form-control", required, placeholder="Nhập mật khẩu mới (nếu muốn thay đổi)")   
+        div(class="form-group")
+            label(for="phone") Số điện thoại
+            input(type="number", name="phone", id="phone", class="form-control", required, placeholder="Nhập số điện thoại", value=user.phone)
+        div(class="form-group")
+            label(for="avatar") Ảnh đại diện
+            input(type="file", name="avatar", id="avatar", class="form-control-file", accept="image/*,upload-image-input")
+            img(src=user.avatar, upload-image-preview)
+        div(class="form-group form-check form-check-inline")
+            input(type="radio", name="status", id="statusActive", class="form-check-input,", value="active", checked = (user.status === "active" ? true : false))
+            label(for="statusActive" class="form-check-label") Hoạt động
+        div(class="form-group form-check form-check-inline")
+            input(type="radio", name="status", id="statusInactive", class="form-check-input", value="inactive", checked = (user.status === "inactive" ? true : false))
+            label(for="statusInactive" class="form-check-label") Không hoạt động
+        div(class="form-group")
+            button(type="submit", class="btn btn-primary") Cập nhật
+
+    script(src="/admin/js/script.js")
+
+    

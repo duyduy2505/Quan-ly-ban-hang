@@ -1,6 +1,11 @@
 extends ../../layouts/default.pug
 block main
     h1 Trang tổng quan
+
+    div #{user}
+    div --------------------
+    div #{role.name}
+    div #{role.permissions.join(', ')}
     .card.mb-3
         .card-header Thống kê
         .card-body
